@@ -1,0 +1,14 @@
+E:\FPT Course\Fall 23\PRN211\HomeWork\LAB1\AutomobileLibrary\bin\Debug\net7.0\AutomobileLibrary.deps.json
+E:\FPT Course\Fall 23\PRN211\HomeWork\LAB1\AutomobileLibrary\bin\Debug\net7.0\AutomobileLibrary.dll
+E:\FPT Course\Fall 23\PRN211\HomeWork\LAB1\AutomobileLibrary\bin\Debug\net7.0\AutomobileLibrary.pdb
+E:\FPT Course\Fall 23\PRN211\HomeWork\LAB1\AutomobileLibrary\obj\Debug\net7.0\AutomobileLibrary.GeneratedMSBuildEditorConfig.editorconfig
+E:\FPT Course\Fall 23\PRN211\HomeWork\LAB1\AutomobileLibrary\obj\Debug\net7.0\AutomobileLibrary.AssemblyInfoInputs.cache
+E:\FPT Course\Fall 23\PRN211\HomeWork\LAB1\AutomobileLibrary\obj\Debug\net7.0\AutomobileLibrary.AssemblyInfo.cs
+E:\FPT Course\Fall 23\PRN211\HomeWork\LAB1\AutomobileLibrary\obj\Debug\net7.0\AutomobileLibrary.csproj.CoreCompileInputs.cache
+E:\FPT Course\Fall 23\PRN211\HomeWork\LAB1\AutomobileLibrary\obj\Debug\net7.0\AutomobileLibrary.dll
+E:\FPT Course\Fall 23\PRN211\HomeWork\LAB1\AutomobileLibrary\obj\Debug\net7.0\refint\AutomobileLibrary.dll
+E:\FPT Course\Fall 23\PRN211\HomeWork\LAB1\AutomobileLibrary\obj\Debug\net7.0\AutomobileLibrary.pdb
+E:\FPT Course\Fall 23\PRN211\HomeWork\LAB1\AutomobileLibrary\obj\Debug\net7.0\ref\AutomobileLibrary.dll
+E:\FPT Course\Fall 23\PRN211\HomeWork\LAB1\AutomobileLibrary\bin\Debug\net7.0\AutomobileLibrary.runtimeconfig.json
+E:\FPT Course\Fall 23\PRN211\HomeWork\LAB1\AutomobileLibrary\obj\Debug\net7.0\AutomobileLibrary.csproj.AssemblyReference.cache
+E:\FPT Course\Fall 23\PRN211\HomeWork\LAB1\AutomobileLibrary\obj\Debug\net7.0\AutomobileLibrary.genruntimeconfig.cache
