@@ -2448,11 +2448,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Dowload\\PRN211-main\\PRN211-main\\AutomobileSolution2\\AutomobileLib\\AutomobileLib.csproj",
+      "projectUniqueName": "C:\\Users\\DELL\\Desktop\\slot7\\AutomobileSolution2\\AutomobileLib\\AutomobileLib.csproj",
       "projectName": "AutomobileLib",
-      "projectPath": "D:\\Dowload\\PRN211-main\\PRN211-main\\AutomobileSolution2\\AutomobileLib\\AutomobileLib.csproj",
+      "projectPath": "C:\\Users\\DELL\\Desktop\\slot7\\AutomobileSolution2\\AutomobileLib\\AutomobileLib.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "D:\\Dowload\\PRN211-main\\PRN211-main\\AutomobileSolution2\\AutomobileLib\\obj\\",
+      "outputPath": "C:\\Users\\DELL\\Desktop\\slot7\\AutomobileSolution2\\AutomobileLib\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",

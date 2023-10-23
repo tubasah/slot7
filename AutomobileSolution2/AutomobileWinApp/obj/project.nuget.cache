@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3EokgyNzMBz/aQ2u+mw04e8zVNyjIGb8cD2AookOSBv1sPBqG9CjVgJhhYHkVsBtfb/WUCkNEWe/b4Hr/pCPMA==",
+  "dgSpecHash": "LnGC5Re0J4t9S3YErFnraW8hxhv5yB9SRgc9uDEUJ5M5BboQ8ZDOXKKKHpB3brl3B4sXxZPjEBlmiIkTZuHo5A==",
   "success": true,
-  "projectFilePath": "D:\\Dowload\\PRN211-main\\PRN211-main\\AutomobileSolution2\\AutomobileWinApp\\AutomobileWinApp.csproj",
+  "projectFilePath": "C:\\Users\\DELL\\Desktop\\slot7\\AutomobileSolution2\\AutomobileWinApp\\AutomobileWinApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
