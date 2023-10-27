@@ -22,3 +22,15 @@ D:\Dowload\PRN211-main\PRN211-main\AutomobileSolution2\AutomobileLib\obj\Debug\n
 D:\Dowload\PRN211-main\PRN211-main\AutomobileSolution2\AutomobileLib\obj\Debug\net6.0\refint\AutomobileLib.dll
 D:\Dowload\PRN211-main\PRN211-main\AutomobileSolution2\AutomobileLib\obj\Debug\net6.0\AutomobileLib.pdb
 D:\Dowload\PRN211-main\PRN211-main\AutomobileSolution2\AutomobileLib\obj\Debug\net6.0\ref\AutomobileLib.dll
+C:\Users\DELL\Desktop\slot7\AutomobileSolution2\AutomobileLib\bin\Debug\net6.0\AutomobileLib.deps.json
+C:\Users\DELL\Desktop\slot7\AutomobileSolution2\AutomobileLib\bin\Debug\net6.0\AutomobileLib.dll
+C:\Users\DELL\Desktop\slot7\AutomobileSolution2\AutomobileLib\bin\Debug\net6.0\AutomobileLib.pdb
+C:\Users\DELL\Desktop\slot7\AutomobileSolution2\AutomobileLib\obj\Debug\net6.0\AutomobileLib.csproj.AssemblyReference.cache
+C:\Users\DELL\Desktop\slot7\AutomobileSolution2\AutomobileLib\obj\Debug\net6.0\AutomobileLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\Desktop\slot7\AutomobileSolution2\AutomobileLib\obj\Debug\net6.0\AutomobileLib.AssemblyInfoInputs.cache
+C:\Users\DELL\Desktop\slot7\AutomobileSolution2\AutomobileLib\obj\Debug\net6.0\AutomobileLib.AssemblyInfo.cs
+C:\Users\DELL\Desktop\slot7\AutomobileSolution2\AutomobileLib\obj\Debug\net6.0\AutomobileLib.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\slot7\AutomobileSolution2\AutomobileLib\obj\Debug\net6.0\AutomobileLib.dll
+C:\Users\DELL\Desktop\slot7\AutomobileSolution2\AutomobileLib\obj\Debug\net6.0\refint\AutomobileLib.dll
+C:\Users\DELL\Desktop\slot7\AutomobileSolution2\AutomobileLib\obj\Debug\net6.0\AutomobileLib.pdb
+C:\Users\DELL\Desktop\slot7\AutomobileSolution2\AutomobileLib\obj\Debug\net6.0\ref\AutomobileLib.dll
