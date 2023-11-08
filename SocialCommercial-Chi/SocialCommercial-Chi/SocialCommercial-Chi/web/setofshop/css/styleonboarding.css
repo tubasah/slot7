@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+:root{
+    --background: #d1deec;
+    --foreground: #f1f3f5;
+    --white: #fff;
+    --black: #000;
+    --gray: #6e6e6e;
+    --shadow: #76767663;
+    --border: #cfcfcf;
+}
+.dark-color{
+    --background: #222230;
+    --foreground: #42435c;
+    --white: #2b2c44;
+    --black: #eeecff;
+    --gray: #d5dfd5;
+    --shadow: #00000063;
+    --border: #3f4172;
+}
+
+.darkTheme.button-Active span{
+    margin-left: 16px;
+}
+
+body{
+    background: var(--background);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: #3a78ffec;
+}
+button:focus,
+input:focus{
+    border: none;
+    outline: none;
+}
+h1,h2,h3,h4,h5,h6,b{
+    color: var(--black);
+}
+
+a:focus, a:hover{
+    text-decoration: none;
+    color: inherit;
+}
+
+/* header section style start here */
+
+header{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-container{
+    width: 95%;
+    background: var(--white);
+    height: 100px;
+    overflow: hidden;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px 0 var(--shadow);
+}
+.header-wrapper{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+.logoBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.logo-soco{
+    padding-right: 10px;
+}
+.content{
+    border-left: 2px solid var(--border);
+    padding-left: 10px;
+}
+.iconBox2{
+    width: 25%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 25px;
+    position: relative;
+    
+}
+
+.iconBox2 i{
+    font-size: 20px;
+    background: transparent;
+    padding: 10px;
+    border-radius: 10px;
+    color: #769bcb;
+    transition: .4s;
+    margin-left: 10px;
+}
+.iconBox2 i:hover{
+    background: #1877f2;
+    color: #d1deec;
+    cursor: pointer;
+}
+.iconBox2 label{
+    width: 45px;
+    height: 45px;
+    overflow: hidden;
+    border-radius: 50px;
+    position: relative;
+}
+.iconBox2 label img{
+    width: 100%;
+}
+.iconBox2 .fa-caret-down{
+    position: absolute;
+    right: 0;
+    font-size: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.iconBox2 .fa-caret-down:hover{
+    background: transparent;
+}
+.iconBox2 .arrow_carrot-down {
+    font-size: 16px;
+    font-weight: bold;
+    color: #769bcb;
+    background: #fff; /* Màu nền của hình tròn */
+    border-radius: 50%; /* Tạo hình tròn */
+    padding: 5px; /* Tăng độ rộng và chiều cao của hình tròn */
+    transition: .4s;
+}
+
+.iconBox2 .arrow_carrot-down:hover {
+    background: #5c91c6; /* Màu nền khi hover */
+    color: #d1deec;
+}
+.iconBox2 a {
+    margin-right: 20px; /* Add a margin to the right of the shopping cart icon */
+}
+
+/* CSS cho class "header-dropdown" */
+.header-dropdown {
+    position: absolute;
+    top: 100px;
+    right: 100px; /* Đặt lớp nằm bên phải của màn hình */
+    display: inline-block; /* Để dropdown nằm trên cùng một dòng với nút */
+}
+
+/* CSS cho dropdown content */
+.header-dropdown .dropdown-content {
+    display: none;
+    background-color: #f9f9f9;
+    min-width: 170px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    /* Thêm các thuộc tính để điều chỉnh vị trí theo yêu cầu */
+    position: absolute;
+    top: 100%;
+    right: 0; /* Đặt dropdown nằm bên phải */
+}
+
+/* CSS cho các tùy chọn trong dropdown */
+.header-dropdown .dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    color: #333;
+}
+
+/* CSS khi hover chuột trên các tùy chọn */
+.header-dropdown .dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+
+/* CSS cho các tùy chọn trong dropdown */
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    color: #333;
+}
+
+/* CSS khi hover chuột trên các tùy chọn */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+
+
+/* header section style end here */
+
+/* home section start here */
+
+.home{
+    display: flex;
+    justify-content: center;
+}
+.containerr{
+    width: 95%;
+    background-color: white;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px 0 var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 75vh;
+}
+.containerr h1{
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
+}
+.containerr p{
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #666;
+}
+.containerr a{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.form-group label {
+    flex: 1; /* Để label mở rộng hết phần còn lại của dòng */
+    font-weight: bold;
+    color: var(--black);
+    margin-right: 10px; /* Khoảng cách giữa label và input */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    flex: 2; /* Để input chiếm 2/3 chiều rộng của dòng */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-size: 16px;
+    color: var(--black);
+    transition: border-color 0.3s ease-in-out;
+}
+
+@media (min-width: 768px) {
+    .containerr form {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
