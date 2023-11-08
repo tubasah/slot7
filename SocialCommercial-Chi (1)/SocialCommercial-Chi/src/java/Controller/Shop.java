@@ -7,6 +7,7 @@
 package Controller;
 
 import DAO.ProductDAO;
+import DAO.UserDAO;
 import Model.Category;
 import Model.Product;
 import java.io.IOException;
@@ -87,6 +88,8 @@ public class Shop extends HttpServlet {
             session.setAttribute("tendanhmuc", tendanhmuc);
             session.setAttribute("danhmuc", danhmuc);
             session.setAttribute("total", totalProduct);
+            UserDAO userdao=new UserDAO();
+            request.setAttribute("user_name",userdao.getUserNameById(iduser) );
             request.getRequestDispatcher("Shop.jsp").forward(request, response);
         }
         if (danhmuc == null) {

@@ -60,8 +60,10 @@
                             <div class="breadcrumb__text">
                                 <h2>${shopName}</h2>
                             <div class="breadcrumb__option">
-                                <a href="./seller">Home</a>
-                                <span>Shop</span>
+                            
+    <a href="getcontentchat?nguoinhantin=<%= request.getAttribute("user_name")%>" style="color:black ;">
+                           Nhắn tin với chủ shop
+                        </a>
                             </div>
                     
                         </div>
