@@ -1,0 +1,661 @@
+USE [SWP391]
+GO
+/****** Object:  Table [dbo].[AppUser]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AppUser](
+	[id] [uniqueidentifier] NOT NULL,
+	[name] [nvarchar](200) NULL,
+	[password] [nvarchar](200) NULL,
+	[email] [nvarchar](255) NULL,
+	[number] [nvarchar](200) NULL,
+	[role_id] [int] NULL,
+	[image] [nvarchar](max) NULL,
+	[fullName] [nvarchar](100) NULL,
+	[gender] [nvarchar](10) NULL,
+	[statusNow] [nvarchar](50) NULL,
+	[school] [nvarchar](100) NULL,
+	[favour] [nvarchar](100) NULL,
+	[bio] [nvarchar](max) NULL,
+ CONSTRAINT [PK__AppUser__3213E83FF445C707] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Feedback]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Feedback](
+	[feedBack_id] [uniqueidentifier] NOT NULL,
+	[rated_star] [float] NULL,
+	[feedback] [nvarchar](max) NULL,
+	[image] [nvarchar](max) NULL,
+	[status] [bit] NULL,
+	[product_id] [uniqueidentifier] NULL,
+	[userId] [uniqueidentifier] NULL,
+	[date] [datetime] NULL,
+ CONSTRAINT [PK_Feedback] PRIMARY KEY CLUSTERED 
+(
+	[feedBack_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Hint]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Hint](
+	[id] [int] NULL,
+	[userid] [uniqueidentifier] NULL,
+	[context] [uniqueidentifier] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Order]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Order](
+	[id] [uniqueidentifier] NOT NULL,
+	[customer_id] [uniqueidentifier] NULL,
+	[seller_id] [uniqueidentifier] NULL,
+	[fullname] [nvarchar](max) NULL,
+	[phone] [nvarchar](max) NULL,
+	[order_total] [decimal](10, 2) NULL,
+	[order_date] [date] NULL,
+	[order_town] [nvarchar](200) NULL,
+	[order_location] [nvarchar](200) NULL,
+	[status] [nvarchar](max) NULL,
+	[stt] [int] IDENTITY(1,1) NOT NULL,
+ CONSTRAINT [PK__Customer__3213E83FFAA05241] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[OrderDetail]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[OrderDetail](
+	[id] [uniqueidentifier] NOT NULL,
+	[order_id] [uniqueidentifier] NULL,
+	[product_id] [uniqueidentifier] NULL,
+	[quantity] [int] NULL,
+	[price] [int] NOT NULL,
+ CONSTRAINT [PK__OrderIte__3213E83FF2231EE5] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ProductCategory]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ProductCategory](
+	[id] [uniqueidentifier] NOT NULL,
+	[type] [nvarchar](200) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ProductInfo]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ProductInfo](
+	[product_id] [uniqueidentifier] NOT NULL,
+	[seller_id] [uniqueidentifier] NULL,
+	[type_id] [uniqueidentifier] NULL,
+	[product_name] [nvarchar](200) NULL,
+	[product_image] [nvarchar](max) NOT NULL,
+	[product_available] [int] NULL,
+	[product_sales] [int] NULL,
+	[product_price] [decimal](10, 0) NULL,
+	[product_voucher] [decimal](10, 2) NULL,
+	[product_description] [nvarchar](max) NULL,
+ CONSTRAINT [PK__ProductI__3213E83F81EA1832] PRIMARY KEY CLUSTERED 
+(
+	[product_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[requestSetRole]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[requestSetRole](
+	[id] [uniqueidentifier] NOT NULL,
+	[user_id] [uniqueidentifier] NULL,
+	[email] [nvarchar](255) NULL,
+	[fullName] [nvarchar](200) NULL,
+	[shopName] [nvarchar](200) NULL,
+	[commoditiesSector] [nvarchar](200) NULL,
+	[address] [nvarchar](200) NULL,
+	[phone] [nvarchar](200) NULL,
+	[status] [nvarchar](200) NULL,
+ CONSTRAINT [PK__requestS__3213E83F718D8C48] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ShopComment]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ShopComment](
+	[id] [uniqueidentifier] NOT NULL,
+	[product_id] [uniqueidentifier] NULL,
+	[commentor_id] [uniqueidentifier] NULL,
+	[comment_content] [nvarchar](max) NULL,
+	[comment_date] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ShopLike]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ShopLike](
+	[id] [uniqueidentifier] NOT NULL,
+	[product_id] [uniqueidentifier] NULL,
+	[liker_id] [uniqueidentifier] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ShoppingCart]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ShoppingCart](
+	[id] [uniqueidentifier] NOT NULL,
+	[user_id] [uniqueidentifier] NULL,
+	[cart_quantity] [int] NULL,
+	[cart_total] [decimal](10, 2) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ShoppingCartItem]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ShoppingCartItem](
+	[id] [uniqueidentifier] NOT NULL,
+	[cart_id] [uniqueidentifier] NULL,
+	[product_id] [uniqueidentifier] NULL,
+	[item_quantity] [int] NULL,
+	[item_subtotal] [decimal](10, 2) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SocialComment]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SocialComment](
+	[id] [uniqueidentifier] NOT NULL,
+	[post_id] [uniqueidentifier] NULL,
+	[commentor_id] [uniqueidentifier] NULL,
+	[comment_content] [nvarchar](max) NULL,
+	[comment_date] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SocialLike]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SocialLike](
+	[id] [uniqueidentifier] NOT NULL,
+	[post_id] [uniqueidentifier] NULL,
+	[liker_id] [uniqueidentifier] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[UserFollow]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UserFollow](
+	[id] [uniqueidentifier] NOT NULL,
+	[follower_id] [uniqueidentifier] NULL,
+	[following_id] [uniqueidentifier] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[UserMessage]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UserMessage](
+	[id] [uniqueidentifier] NOT NULL,
+	[sender_id] [uniqueidentifier] NULL,
+	[receiver_id] [uniqueidentifier] NULL,
+	[context] [nvarchar](max) NULL,
+	[message_date] [datetime] NULL,
+ CONSTRAINT [PK__UserMess__3213E83FF2A55861] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[UserNotification]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UserNotification](
+	[id] [uniqueidentifier] NOT NULL,
+	[user_id] [uniqueidentifier] NULL,
+	[notification_content] [nvarchar](max) NULL,
+	[notification_date] [date] NULL,
+	[link_notify] [varchar](255) NULL,
+	[reacter] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[UserPost]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UserPost](
+	[id] [uniqueidentifier] NOT NULL,
+	[user_id] [uniqueidentifier] NULL,
+	[post_title] [nvarchar](200) NULL,
+	[post_content] [nvarchar](max) NULL,
+	[post_image] [nvarchar](255) NULL,
+	[post_date] [date] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[UserRole]    Script Date: 11/9/2023 12:09:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UserRole](
+	[id] [int] NOT NULL,
+	[role] [nvarchar](200) NULL,
+ CONSTRAINT [PK_UserRole] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+INSERT [dbo].[AppUser] ([id], [name], [password], [email], [number], [role_id], [image], [fullName], [gender], [statusNow], [school], [favour], [bio]) VALUES (N'26162cd7-5f3e-4840-939b-215a0b99e293', N'admin', N'admin', N'admin@gmail.com', NULL, 1, N'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg', NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[AppUser] ([id], [name], [password], [email], [number], [role_id], [image], [fullName], [gender], [statusNow], [school], [favour], [bio]) VALUES (N'41ed0e34-167b-4f00-9373-25ef1eae084c', N'vinh4', N'vinh', N'vinh', NULL, 3, N'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg', NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[AppUser] ([id], [name], [password], [email], [number], [role_id], [image], [fullName], [gender], [statusNow], [school], [favour], [bio]) VALUES (N'8846073f-5dd6-4f6d-98f3-2ac57ef78ee9', N'vinh2', N'vinh', N'a@gmail.com', NULL, 3, N'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg', NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[AppUser] ([id], [name], [password], [email], [number], [role_id], [image], [fullName], [gender], [statusNow], [school], [favour], [bio]) VALUES (N'34e2e5af-50ed-430f-8e5e-309411e3e7d3', N'shipperhanoi', N'vinh', NULL, NULL, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[AppUser] ([id], [name], [password], [email], [number], [role_id], [image], [fullName], [gender], [statusNow], [school], [favour], [bio]) VALUES (N'92613d38-9204-4f7a-a1dc-40974f47c995', N'vinh5', N'vinh', N'a', NULL, 3, N'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg', NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[AppUser] ([id], [name], [password], [email], [number], [role_id], [image], [fullName], [gender], [statusNow], [school], [favour], [bio]) VALUES (N'301b32cd-5b1b-4b35-b80a-50b2281893e8', N'vinh1', N'vinh', N'a@gmail.com', NULL, 3, N'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg', NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[AppUser] ([id], [name], [password], [email], [number], [role_id], [image], [fullName], [gender], [statusNow], [school], [favour], [bio]) VALUES (N'73f72978-bb21-4d6f-a3c3-5860d4fec10b', N'vinh3', N'vinh', N'a', NULL, 3, N'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg', NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[AppUser] ([id], [name], [password], [email], [number], [role_id], [image], [fullName], [gender], [statusNow], [school], [favour], [bio]) VALUES (N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'vinh', N'vinh123456', N'vinhdqde170663@fpt.edu.vn', NULL, 3, N'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg', NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[AppUser] ([id], [name], [password], [email], [number], [role_id], [image], [fullName], [gender], [statusNow], [school], [favour], [bio]) VALUES (N'5e886d7c-9657-4b40-9cad-5ce659382a8e', N'vinh6', N'vinh', N'a', NULL, 3, N'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg', NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[AppUser] ([id], [name], [password], [email], [number], [role_id], [image], [fullName], [gender], [statusNow], [school], [favour], [bio]) VALUES (N'8a44c11a-3069-4215-85da-a640040d1259', N'vinh7', N'vinh', NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[Hint] ([id], [userid], [context]) VALUES (NULL, N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'cd689f50-44b1-42a4-bc98-331a34a7ff00')
+GO
+INSERT [dbo].[Hint] ([id], [userid], [context]) VALUES (NULL, N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'cd689f50-44b1-42a4-bc98-331a34a7ff00')
+GO
+INSERT [dbo].[Hint] ([id], [userid], [context]) VALUES (NULL, N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'cd689f50-44b1-42a4-bc98-331a34a7ff00')
+GO
+INSERT [dbo].[Hint] ([id], [userid], [context]) VALUES (NULL, N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'a6b2fc75-ebac-47e9-9b26-b660dcb1548a')
+GO
+INSERT [dbo].[Hint] ([id], [userid], [context]) VALUES (NULL, N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'cd689f50-44b1-42a4-bc98-331a34a7ff00')
+GO
+INSERT [dbo].[Hint] ([id], [userid], [context]) VALUES (NULL, N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'5320f87e-f241-470f-8bf2-32458f1fe25b')
+GO
+INSERT [dbo].[Hint] ([id], [userid], [context]) VALUES (NULL, N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'2743807c-3ed0-4b6b-a30f-5512fa6b5a64')
+GO
+SET IDENTITY_INSERT [dbo].[Order] ON 
+GO
+INSERT [dbo].[Order] ([id], [customer_id], [seller_id], [fullname], [phone], [order_total], [order_date], [order_town], [order_location], [status], [stt]) VALUES (N'1ff8b8d6-878e-4bf8-9c78-aa9b8f3e220d', N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'92613d38-9204-4f7a-a1dc-40974f47c995', N'Quang Vinh', N'0918900356', CAST(45000.00 AS Decimal(10, 2)), CAST(N'2023-11-08' AS Date), N'hanoi', N'26 Cẩm lệ,Đà Nẵng', NULL, 11)
+GO
+INSERT [dbo].[Order] ([id], [customer_id], [seller_id], [fullname], [phone], [order_total], [order_date], [order_town], [order_location], [status], [stt]) VALUES (N'f3d3f52c-efcc-41ce-a7af-b95f9dcf7641', N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'Quang Vinh', N'0918900356', CAST(103000.00 AS Decimal(10, 2)), CAST(N'2023-11-08' AS Date), N'hanoi', N'26 Cẩm lệ,Đà Nẵng', N'Hoan thanh', 12)
+GO
+SET IDENTITY_INSERT [dbo].[Order] OFF
+GO
+INSERT [dbo].[OrderDetail] ([id], [order_id], [product_id], [quantity], [price]) VALUES (N'cc283e4a-f761-4bef-9b0e-15745134d403', N'f3d3f52c-efcc-41ce-a7af-b95f9dcf7641', N'a6b2fc75-ebac-47e9-9b26-b660dcb1548a', 1, 10000)
+GO
+INSERT [dbo].[OrderDetail] ([id], [order_id], [product_id], [quantity], [price]) VALUES (N'681d73d9-86d3-466e-92ad-21a01b7ec2d9', N'f3d3f52c-efcc-41ce-a7af-b95f9dcf7641', N'cd689f50-44b1-42a4-bc98-331a34a7ff00', 1, 58000)
+GO
+INSERT [dbo].[OrderDetail] ([id], [order_id], [product_id], [quantity], [price]) VALUES (N'4a9401da-f726-430b-a6d5-a165383a70f1', N'1ff8b8d6-878e-4bf8-9c78-aa9b8f3e220d', N'2743807c-3ed0-4b6b-a30f-5512fa6b5a64', 1, 10000)
+GO
+INSERT [dbo].[ProductCategory] ([id], [type]) VALUES (N'32de7141-e052-4591-a103-2f5f544e01e0', N'Bách hoá online')
+GO
+INSERT [dbo].[ProductCategory] ([id], [type]) VALUES (N'467e803a-426e-441d-8db8-669ae23a3469', N'Điện thoại & Phụ kiện')
+GO
+INSERT [dbo].[ProductCategory] ([id], [type]) VALUES (N'eecbd3f1-134e-43b0-a3e1-700edb72a6a4', N'Mỹ phẩm')
+GO
+INSERT [dbo].[ProductCategory] ([id], [type]) VALUES (N'9bd9c078-7e46-4ba0-be56-7223ee26608b', N'Máy ảnh & Máy quay phim')
+GO
+INSERT [dbo].[ProductCategory] ([id], [type]) VALUES (N'c9c33aeb-38f4-44a0-89b5-860ba5ae8c23', N'Máy tính & Laptop')
+GO
+INSERT [dbo].[ProductCategory] ([id], [type]) VALUES (N'2ea22aa1-2368-4742-8d96-994337ed92de', N'Đồ chơi')
+GO
+INSERT [dbo].[ProductCategory] ([id], [type]) VALUES (N'1818e9a8-52cd-4538-9512-ad9234bd1eea', N'Thời trang nam')
+GO
+INSERT [dbo].[ProductCategory] ([id], [type]) VALUES (N'063c4ea1-948f-48ed-87da-d8c9e326f01a', N'Thời trang nữ')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'823d6d83-0048-4255-9f9a-1644227346cb', N'301b32cd-5b1b-4b35-b80a-50b2281893e8', N'467e803a-426e-441d-8db8-669ae23a3469', N'Di động vàng', N'SavedImages/images.jfif', 100, NULL, CAST(10000 AS Decimal(10, 0)), NULL, N'Di động vàng')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'66ae2e75-6abc-4786-b615-1b7814fc705b', N'92613d38-9204-4f7a-a1dc-40974f47c995', N'2ea22aa1-2368-4742-8d96-994337ed92de', N'Chú thỏ và củ cà rốt', N'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAHwAfAMBEQACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABAUCAwYHAf/EADYQAAEDAgQEAwUHBQEAAAAAAAEAAgMEEQUSITEGQVFxE2GBIiMyobEUQlJikcHRBzSC4fAV/8QAGgEBAAMBAQEAAAAAAAAAAAAAAAECAwQFBv/EAC0RAQACAgEDAgQEBwAAAAAAAAABAgMRBBIhMQVBIjJRgSNxkaEGExVCUmHR/9oADAMBAAIRAxEAPwD3FAQEBAQEBAQEBAQEBAQEBAQEBAQEGEzxHE+Q7NaXH0QhQsq/Fb40jnEnXQ7dlj1N+j2T6TEG/YpJpSSItzzPT1V627bUtTVtQ1sr6hwz2aRvlAVeuU9ELOGRs0TZG7OF1pHdnMaZqUCAgICAgICAgICDXPH4sL4zs9pb+qDksOefBcx2jmmxC5nXLVisskUUUDBZs04zdgLqLW1H5rUrFp39EiGtbD7t7i02tqnVpE034dHhQtQxn8V3DsV0U8OW/wAyWrKiAgICAgICAgICCNXVbKSLO7Vx0a3qVEzpateqXPxU5NRJPma0yOLi0DQErGe87b71Gm+SBkhBeM1tr8lGk7+jXJTsvcsF+tk0jqla4ZWNkaKdwAewWb+YBbVnfZjaNd1irKCAgICAgICAgIMXvaxpc8hrRuSbAIOar6oVNc4scDGz2WEHS3VZWncuildQ3QkZVAg1ONQ0uJx0UkbjmAJeDtfbRS3rx7XxzeJWVRLDEB4sjGZjZuZ1rlHPWsz4c3XV9dR8W0UDP7OaE29naQXJN+1tPNV8S6q4qX49rf3RP7O+hkEsTZG7OAIW7zvDNAQEBAQEBB8OgQUmP8RQYX7qMCWqI+C+je/8KJnTt4vCvnnfiv1ef4vitfiBzVEznAnRg0a30WdrS+gw8XFhj4YdFTHKGjoqPn7d5WMT/ZU7U00S0NPVzxVFTFaWI6ZXbjlfqrTrfZpGS1ImtZ7SmztjmDfFY1+U3bmaDY9UZRuPCK5uVoa57nnm525VZX/Jd4NURmjjhzND23GW+tgVrWdw58kT1TKyVmYgICAgIPhNhcoORxjjWgMdRS4RUGapboZGNuxmuuvM9rqnXE+GvArTl5ppWe0eXGGR0jy95LnON3Em5JVX19axWIiGbWscMj9j8LlCbRuF3S1AcAHmzvkVGni5uJas7jwt6VrZBq+/ZNOC0TWdabJnxwEZpWgeZTS1Mdr+IanV0AGji7s1TqW8cXJ9NIsuIRj4W6nqd1PS3rwre8o9TWuniEZY0AEOBFwQR0KmI01pxK0nq2t8Gx97CIK92Zh0bITcjv17q8OHk8LXxY/0dQ0ggEG4PNS8x9QEBAQcr/UuukoeE6jwnFrp3thLhyBOvyBHqqZJnp7OTnXmuC0w8wwqMQ0bTe7pDmv9FlWNQ+h/hvjxi4cX97d/+LFj7AHzsrPoUlliO+4UqpETfwuI+YU6VmyVG1/UegU6ZzMM8pCI7HdDswku0teD7INnduqhMa8NgjLtWWy9QpVmY8SwcS11naFSrNdw6bhbFQ5woJnXda8V+nRTEvF53Gmv4kR293TKXnCAgIK3iHCKfHcJmw+rzBktrPbuxw1BHqkxtTJjjJWay8irqb/zah1EH5/sxMWe1s2XS9vRY27Pq/TaRTjUr9IhjHLsPK6iHoaS45bAnoFO0aTqOS7Wl9r81aGOSFnERYK8OezflaQpUi0wjPuHDKxxaTbNyVW0T/t9tZEsGjwnXhe6M/l2UJn4o1aNtbml0hkc4uceahPaI1DKFz4pWTRmz43BzT0KmHNliJiaz4l6PTytngjlZ8L2hw9Vd81avTMw2IgQEHwoPH+MqR9Jj9WHbPkMjT5O1Wd4fTen5IthjXspg6xB8lm9PaRG7Mxwvy/dCEuKUgiytCswmxVRYLk6K29MrY4TW1RcxwF81uSnqZTj1KR4jfhadBoFbbOKz5lkGZgmjq0wbC5z8oUaXm8RG00UMYb7R1VtOac9pnsr6tghfdhVZ7N6fiRqXYcLVTanCmAG5jcW26c/3Vt7fP8AMxTjyzErlHKICAg43j7D4ax1LlZaps73lz8A5Ec9Tp016rG8ZLWiKff8nRg5WTBPw+Hm1VFJSyuimaQQbXUWrMT3fUYM9ctYtV9hdf4TdQ6NpcLrbq0IlIcMzWDkSiIlva8jmpQ3RzEblETVOiqwG67q8WYWx7lnBU2dclIsi+PcaSH1lxup2yjCr6qfPfmqTLppTS94CmP2qqhv7JYHW7H/AGpq8r1ekarZ2iu8QQEBBznFDXCpgkaL+7d8iP5VsfzIny4bigwmRs0oGVzBmI5Hr9FxcrPGHkRW3i0fpMOvicqcNtTPZzj4HM9uM5mHYhaa94fS4s8Whtgn5OOqbbbTo5dLclZDc16DLOAbZhfoiWxjj5fqg3NeRyRE6ZGQojTTK8C93XKhaHVf0+hLnVdSRZtmxt+p/ZXo8T1e/etPu7RXeKICAgg4vROraUtjIbMw543O2v5+RBIVbb818ol57i/DuO4nMYmYeIgNLmRuXve68vkYuRyM3VautdvKmp26DC+BaSDBGUlW69WSXumZsCeQB3C9DBj/AJdOmXTiz3xeJcxjXB1dQuMkcfjRcnxi9u43C0mkT4exx/UKz2sofDkiNnX9VXpmHo1y1s2teRuoaRaH0vvY8wi++zPx7IQ+tqPNRtfpZfabc1GzpZU0c9bUx09Mxz5ZDZoH/bJHdTLkpipNrT2h6xgmHMwvDoqVhBLdXu/E47lbRGofIcjNObJN5T1LEQEBAQEBAsgrcQwLDsQuZ6Zuc/fZ7JRrTNfH8svL+NcHqeGax9YBJNhT8rWm4Ja4/dO1tt9j3WdtxO/Z7nC5Vc9OifmQcFacdn8DDYpHy5S/I4WNha+u3MJExbw6MmWcNeq/hZy8MYu296Cb0F/opmjOvqGH/Jqbwtjbz7ugl/ys36qvRLb+pcePNlnQcA4rO4GslipWcxfO79Bp80jH9WGX1jFWPgiZ/Z3OB4BQ4NFlpoy6Rws+V+rnfwPJaRER4eJyOXl5Ft3n7LZS5hAQEBAQEBAQEGqppoaqF8FTEyWGQZXxyNDmuHQgomszWdxPdFwzBcNwkPGHUcVPn+LIN/Lt5JrTTJmyZfnnadZGRZB9QEBAQEBAQEBAQEBAQEBAQEBAQEBB/9k=', 100, NULL, CAST(10000 AS Decimal(10, 0)), NULL, N'Gấu bông')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'ef279cc2-6e08-4471-b719-244023283d5f', N'8846073f-5dd6-4f6d-98f3-2ac57ef78ee9', N'eecbd3f1-134e-43b0-a3e1-700edb72a6a4', N'Dầu Gội Bưởi Cocoon 500Ml', N'SavedImages/3028208_cab7887b39f9448f8b9673295d63d771_grande.webp', 1000, NULL, CAST(20000 AS Decimal(10, 0)), NULL, N'Dầu Gội Bưởi Cocoon 500Ml')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'ad85155d-3bfe-4461-be6b-2699f8a7a653', N'73f72978-bb21-4d6f-a3c3-5860d4fec10b', N'9bd9c078-7e46-4ba0-be56-7223ee26608b', N'Máy ảnh kĩ thuật số', N'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTvRAB_UumOIAJfLMG3DtprrZTFsI2cQdMF2WoOvJU1B82Jyy_2dj4z9ecQhz2_l_t5SqhQSLd81zukt3vtz7wwq8g08JqDB2bmOOLK51bmdl5-325C6YPCDjE&usqp=CAc', 100, NULL, CAST(60000 AS Decimal(10, 0)), NULL, N'Máy ảnh nét căng')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'c6d35b9b-fa30-4074-b0b4-2e08cc09e902', N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'32de7141-e052-4591-a103-2f5f544e01e0', N'Nước tương tỏi ớt tươi Maggi chai 200ml', N'SavedImages/nuoc-tuong-toi-ot-tuoi-maggi-chai-200ml-202209082100206470.webp', 100, NULL, CAST(17000 AS Decimal(10, 0)), NULL, N'Nước tương Maggi sản phẩm nước tương được lên men tự nhiên từ những hạt đậu nành chọn lọc. Nước tương tỏi ớt tươi Maggi chai 200ml kết hợp với tỏi cùng ớt tươi, mang lại hương vị cay, đậm đà, thích hợp sử dụng làm nước chấm, nêm ướp thức ăn.')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'5320f87e-f241-470f-8bf2-32458f1fe25b', N'5e886d7c-9657-4b40-9cad-5ce659382a8e', N'1818e9a8-52cd-4538-9512-ad9234bd1eea', N'Áo phao', N'https://cafefcdn.com/203337114487263232/2022/1/25/3-16430806551851748594745.jpg', 1000, NULL, CAST(1000 AS Decimal(10, 0)), NULL, N'Áo phao')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'cd689f50-44b1-42a4-bc98-331a34a7ff00', N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'32de7141-e052-4591-a103-2f5f544e01e0', N'Cánh gà C.P 500g (3-5 cánh)', N'SavedImages/canh-ga-cp-khay-500g-3-5-canh-202202111509425606.webp', 99, NULL, CAST(58000 AS Decimal(10, 0)), NULL, N'Cánh gà là bộ phận ít thịt, nhiều da, giàu chất béo và Cholesterol. Thành phần dinh dưỡng trong 100g cánh gà: ')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'9c8ade9d-56ce-4b3c-a93a-40cf0605bfd9', N'73f72978-bb21-4d6f-a3c3-5860d4fec10b', N'9bd9c078-7e46-4ba0-be56-7223ee26608b', N'Máy ảnh Canoon', N'SavedImages/download.webp', 1000, NULL, CAST(70000 AS Decimal(10, 0)), NULL, N'Máy ảnh chụp cực nét')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'519d39bd-b0a2-41b8-99bb-513a74b4f6aa', N'8846073f-5dd6-4f6d-98f3-2ac57ef78ee9', N'eecbd3f1-134e-43b0-a3e1-700edb72a6a4', N'Dầu Gội Sạch Dầu Mát Lạnh Tsubak', N'SavedImages/cooccoogdn_thumb_tsubaki_27c34ef4c20d43ba87a890190a4e7433_grande.webp', 1000, NULL, CAST(10000 AS Decimal(10, 0)), NULL, N'Dầu gội mát da đầu')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'2743807c-3ed0-4b6b-a30f-5512fa6b5a64', N'92613d38-9204-4f7a-a1dc-40974f47c995', N'2ea22aa1-2368-4742-8d96-994337ed92de', N'Cướp biển', N'data:image/jpeg;base64,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', 99999, NULL, CAST(10000 AS Decimal(10, 0)), NULL, N'Robot cướp biển')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'233a8cec-0619-49e8-9871-5f75a810e020', N'41ed0e34-167b-4f00-9373-25ef1eae084c', N'c9c33aeb-38f4-44a0-89b5-860ba5ae8c23', N'DELL G3 Gaming', N'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQDfQOFIkXuTo_iZvK13UkzixHKUjSZOZ5wPCAMdX3vw6scytCWxKrQEasKFjwfUXrJgl5xoQ7UyEYrRAuYOiO4OXQIHysdOTNs-Cq5OvQrLEB6ttM9HMAaw1GZuqrGb5k_8UKoKA&usqp=CAc', 10000, NULL, CAST(100000 AS Decimal(10, 0)), NULL, N'Max ping,Max mượt')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'4cbb0a74-5277-4c2c-815a-6055b3e9fe41', N'5e886d7c-9657-4b40-9cad-5ce659382a8e', N'1818e9a8-52cd-4538-9512-ad9234bd1eea', N'Áo nỉ giữ ấm', N'https://www.elleman.vn/wp-content/uploads/2015/10/05/xu-huong-thoi-trang-nam-thu-dong-2015-sac-thai-xam-runway.jpg', 1000, NULL, CAST(89000 AS Decimal(10, 0)), NULL, N'Cực ấm và dễ chịu')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'b65866da-0d08-46cc-bae5-731d30db2d20', N'41ed0e34-167b-4f00-9373-25ef1eae084c', N'c9c33aeb-38f4-44a0-89b5-860ba5ae8c23', N'Axus', N'SavedImages/download.jfif', 100, NULL, CAST(10000 AS Decimal(10, 0)), NULL, N'Axus Gaming')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'5f8ccdf6-0a91-40de-b299-787200e3f85d', N'73f72978-bb21-4d6f-a3c3-5860d4fec10b', N'9bd9c078-7e46-4ba0-be56-7223ee26608b', N'Máy ảnh triệu đô', N'SavedImages/polaroid_camera_main-720x720_2_898f4af5684948a28cc93ae799e96391_master.webp', 1000, NULL, CAST(20000 AS Decimal(10, 0)), NULL, N'Đô la mỹ cực nét')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'fde9086d-f486-4402-8415-85c7c2a3e679', N'92613d38-9204-4f7a-a1dc-40974f47c995', N'2ea22aa1-2368-4742-8d96-994337ed92de', N'Xe chở hàng', N'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAHsAmgMBEQACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAAAgMEBQYBB//EADsQAAIBAwIDBgQDBgUFAAAAAAECAwAEEQUhBhIxEyJBUWFxFDKBkUKx0SMkM6HB4QcVUvDxNDVictL/xAAbAQEAAgMBAQAAAAAAAAAAAAAABAUCAwYBB//EADERAAICAQIEAwYGAwEAAAAAAAABAgMEESEFEjFBEyJRBjJhcZGxFDOBwdHwI6HhQv/aAAwDAQACEQMRAD8A9woAoAoAoAoAoAoAoAoBLSInzMBWLkl1PVFvoMPexg7AtWt3RNqpkxcVzHLsDg+RrONkZGEq5RH6zMAoAoAoAoAoAoAoDlAFAFAFAFAJd1jXmY4FeNpdT1Jt6IYN5H+HJrW7omxUyGmvGPQKKwdz7GapXcae4ZurH71g5tmyNaREuLy3gGZZkT3NR531w96RvhTOe0UVV1xLYw5CM0p8lFQ58SqXu7kyvht8uuxU3XF0x/6eBV8i5J/KosuI2P3UkTq+ER/9yJ+icbSGQQ6ki8h2DoN19634/Fpwel26+HVfyRczgqUeal7+huI3EiB0OVYAg+YroIyUlqjnWmm0xVZHgUAUAUAUAUAUAUAUAUAUBB1iya/sjDHKYnBDKw8xUXMx3kVciejJGNcqbOZrVGbN5eabKINVjIHRZl3Bql/E34z5MlbepbKqq+PPQ/0Ky+4omjlaOGAKQdi5zkedarOIWdIImU8MjJc0pFNc63fz7NcMoPgm1RJ5Fs/ekWNeDRDoiveR3OWYn3rUSlCK6ITk0MtDnOpPeJHrTRnuj7HSGUhlII8xXq0ex5rqeo8FX/xuixqTl4e43t4V0vCreejkfWO36djiuK0eDkv0e5f1ZlaFAFAFAFAFAFAFAFABOKA4SBQCGlUetG0j1JvoVfENxGNHuedFOVwvMM752qv4jZCOLNtEzBrbyI6HnNyvaQEdSu61x0JaPQ62t8s9StqQTjmaASzVkkZJHH+WiCEwyMnqvlXskmJRUjXcE6rbWNzKskhVJQBynpnzqZw3IWPa/EezKHjGJZbBNLoeixSJKgaNgynxFdRGSktUco04vRi6yPAoAoAoAoAoAoDhOBnwoCml1Ka6mmiso+0WIjm5Ww2//FSVVGKTk+pCd8ptqC1SGEvyjcrSyRt4rKOb9D+dZ+Hr03+RgrtOr0+Yi64gtbRSbgrzdQIjnP0O9apVruSqpzm0kuv0KDUOJINXIso7YqjHIkLbjAJqq4lCqeNJS+Zc4NdlVqnqUySxu7orAlDhhXFyg47nTuMktWiDdWstsQXQiNvkbwI96l8r5VLTqSaro2bJ7ois2KJG9IQpy1ZMyeyCZsCkUIo4NlFD3uKRigyNjXj3MWtTSaBxNc6eVWRueLyNb8fMtxX5d16fwU+bwyu7dbM9C0vVrXUog0Djmxup6iukxsyrIjrF7nK5GLZQ9JIsKlkYKAKAKAKAKAga5drZ6dNKzcvd6/nW2mHPNIj5Nnh1tlVwKjNozXsn8S8maU58vlA+wrdmv/LyrtsR+Gxfg876yepzijHxUHLjmVMnI6jPT86yxfdZhne8tDznii7+GZ5sZ5NsZx1OP61E4nKcYNwejL72fphdJQn03GeHbz4uSeZVCxwx9cdWPr7ZrkstWRrcpyb123Z1tlNVUlXDqx7TN+1mb8TE1X3baRJmRtpEnaXqLSwuk8avCWwY23VvX0NZqTolot0+xEycZRknF6P1GtQ0jmQz6axljAy0J+dP/oVIioWLWt/p3M6M3R8l2z9ez/gp4jk1rktCxkIlbLivYrYyithw/hFeGIo74FeHg4NqwMCZZ301nIskLspBz1pFuEuaL0ZHuohatJI3ehcWxTosV73X6c/gau8Tiy92/b4nM5nCZQfNXujUxSpMivEwZGGQQcg1dwnGcVKL1RSyi4vRrcXWR4FAFAFAYn/FC9Nvo4jBI5yASPDJ/tU/AiuZtlTxWT5FBdzL6JxvrSWVvpul6dFMYl5Fk5GP33xWy2vHlY257vsiNRmXRgoRS2NS8lzcIr37o8/KA5QYXPkPSkYxhtHobpSlPefUxGsoLi6eMorgn5SMjao98VJ7ltg2OFaaegW4Nro9w5XlLuEUen+zXK8Zet0K123Os4NF2PmYpf3bTGPjy1Rvz2l0/wDJcEX7vphY9eT+dH57dBLz3aDlhPJZ2azGRsqM5B3pLV2+TZmu6Ctny6E4xWWqr2uEguXG0gGFc/8AkPA+tSVarHy2bS9ez+ZFUrsZ8vWK7d18iivLCe0uWSeNlYdM9CPMHxr2cXDaRaU5FdsNYsaHze1YM29joPerw87C896mmxj2HA2TisNNDBj0TFWBBwaxZrlFNaM9H4HuZJ7CZZWLFJdsnOARXRcGslKmSb10ZyHF6o13LlXVGlq4KoKAKAKAzHECpNePHMiSJgAq4yD9Km0LyFbk6SnoyBEkcKckSIi+SjFbVFR6I0JJdAkbCk+lZBmB1abF3IQcYao9zLDF9xAJu30+1hXOTIwb3z/cVx/E4tZUpP0O54G4+A5ehJ1I9yGAficfYVUUrdyLOjdyl6HNSOIIYB1dgK9p95yFG8nL0O6ieWzSMdXIWlO82xRvY5MXO5tbNezwGOAKxgueb1MYRVlj1LKC57a3WC8AaI+e5T1B61nC5x8j3j9vkQrKuWfPX1+5UTW6q7iNs4OxPiKc3oWELW4rmIgUgnmGK2akjXUSp7xNes90Fxt3qxaPH0JCncVrZqaPQOAH7l0vnyn86uOBS3sj8v3OV42vNF/M19dEUQUAUAUBmdY/7hL9PyFTqfcRW5H5jK9ig+YgH3rcR9hucgR7dP7UXU8k9jzbVZT8TL/7Godz3LHHekUVyXssJ/ZOVIOarr6KrvzFqWWPmX0aquWiZc2mpQ3tzbvNIiuFwVJweb2rm8jElTzKCeh1eFxCqzH0ckpvtqTZz22pxoN1jXNQ4+Wpv1LKHlpb9Tt2e1v4Y/BBk15X5a2xV5apMXe9+4giHnk15XtFsxp2jKROHy1H7kfuQbjuS+4FSIbxJFe8RDBZFwRv517roZLVMjyQmMeYrNS1NsZpnI0OM162euSJMMDyMAqsfYVrbNM7FFbm54CUpczgbr2fX61acEf+efyOa4y9YRb66m0rpjnwoAoBLnCMR4CsZvli2NNTGXb/ABErSu7K5+Zh0P0qix+L3pKSezKy6vzvm6maveI4reYpFpN1cwr80pVQG9uY5Pv0qyWBxPMfiSenouhGdtMNmyTYahb6lC02nHcbPAwwyn1FQ/xubwy7kvjrF/3ZmShCzeDMve6RNJM8ksqxqW6AFyPel3HITfkj9TpcPg2RbFN6JDUOlWkXeYGdumW2Htiq+3Pus+CMczDnhSUZ9+jGtS0OaWaGe2RYeXHMMd046Hbxr3Hy/K4S3IbsUouJNhn+FnEs6sSwAYgbe9YTxHOHkfQ6PE4y3XCmyPTbUkWg7W/uJfI8oqDb5YKJ0tj5aoxHI/2moO/gg5RWMtq0jF+WpL1Jw6VGIzIGo5V0bwIxUmndaEmjowt7W5mAKREL/qbuj+dbeQ8ndXHZsk/BqFxJMG9Ixn+dam0nsavHfWK+pM0/Spbp+Szti5HUk9PvWyrHyMj8uLa/19SNfmwr/MkaOy4QndQbudIx15YxzH9KsqeB2PeyWnyKm3jEE/8AHHX5ml0vTLfTYilurZb5mY5Jq6xMKrFi1Dv3KnIybMiWsydUsjhQBQCZP4bexrCxawaPV1POeIbprOwZk+dzyLgb5P8AbNUHshTDIubs6QWv8ELjydT5of8Aoqo+HZGt+eW4xMRk7bZ9/wCtWcvbdLI5VXrX899Pt+hpj7MJ1ayn5/8ARmbq5m0DVEulUhkbllQfjXxH9R6iujz6aOJYalB6qW8X8f71KnHVtFsqp7NGnurd7iKRoQZI5lJRx0IYbfnXzJwlCzRrufUMLimNKqE5TSa01T9SnsreSLtubBy2QvrgVstmpNIsOJ49ebTyd+z/AL9C3t2lSNX7JlVhkHwrSobnzyVHJJxezR2YJICJUVgfMf1FZylZBadj2Dtg9Y7kIWLQydvaysFz3kO6ke/nXrsUlyyRc43HLK2lcnp9SN8QbfnZh1Ykkb1l4PP0OlhxTCv0UZjsV28jAqMjzJrXKlR6kz/G9kyS9/bwkF50Vx+HqfoKxhVbrrFFc83Gkn5tRPxd1dH92tJZM9HnPIv61s8HXecvoQreKV17QQuGxu5pUN1e8mDnsoBj7nqayXhx2S+pUZHE7bE0m/sTmu/8rv8ACSlGRyy8p6Z3/rX0HhGPXLCiq90+vz7nO53EJSvU7Hukl9Eek6RfJqOnxXUfRxuPIjY1HtrdU3BljRbG6tTj3JlazcFAFAFAFAY/j3Sx/la3dsmGgmWR18CN/wBay4Zh01W2ci0dkWn8/wC6kLicpyqhLryNMhwyLJApU5Uj718ttqnVY4S6p6HUVzjOKlHozD8dxK0gI6mPJH1r6d7JylZwqUZdpNL6J/uzj+NqMM+LXdfyXXB0hm4ZsubqiFPoCQP5Cua4pyxzLF8dfqZxT5U2hWoW3ZSdqo2fr6GqufqdnwPN8arwpdY/b/grTL1rZxA7fspT3c+DeVewm0tiHx3Daf4iH6/yVXE8lw+oiK3ZIY+QFmx4n0roOE8Eszk7HtHXr/ByF3EVQ+V9SHbXt1p8JWOftAdySu32roY+zVEN5Nv7GmrPhOXUjSa2kzhb2Bdz/Fj7pHuOlQc72fUYueN1Xb1+RK/EQZbWltIwQ2kiPExyQxwR51x9k10mX9HGYxocFHz6cuuvbt9CyjsI45GeKBEZmJLY3JzWizI9SB40mtNdibFbK38Rmb06CsfG1j5pGcKbJ+7EnQQRoAUUD6V4r60tkZywrU/N8DJ6+S2t3IP4ezxjy5BX032Uvd3DIuXZv7nMcex1Rl8q7pHoP+HvMNEZWOwlJH1ArZxLR3a/AsuDprH0+JqKry1CgCgCgCgG7iGO4heGZeZHUqw8xXsZOLTRjOKnFxfRnnmqadf6C7JEomtif2RbO3pt+VY5fBcHis/GbcJ99O/99Suhl5XDVyRXNDtr2/X9jB61dSXtz2chDTyEAINsfoKvKacbh2MqKui+pVKWTnX+NJb/AOjU8MaNq2lWBjnKSKzc6RLuEB671xXGcSrNu8SCafr6nW4EZU1ck3qWlwyNGY7mN4sjGSOlc7Zg5VPR6on0qqFqtgtGiiubWd4+zhQs3OCCOmxBzmvITjB6y2L++ddtEl6pitOs11LU7qW6HMkb8oQnqfX22rseO8Rs4XhUY2M+Vtbvvp/1nznhGBDJvstuWqT00H9b0eGO3aa0jCFBllHQions37SXyyFjZUuZS6N9U+31JHGOC1eE7qI6OPXTuY2W1UsfI7ivorgmcpG16Gj4RQdo8WT3RtXzD2rx/wALl80VtLf+TruE4tWXjKb6p6P9v9GoaLveJFci7HLqXEMCMZbdNv8ApwI2QVIxXmq7lpFLTQlW6tjl6ZPjWGictDGzQzNpYXWua1eSQwtntApH+kL3d/tX1zg1S4dw6Fc3u9/rucLnwedmSlFbLb6HqGjaeumWEdspyRux8zWu6x2zciyoqVUFBE6tRuCgCgCgCgCgEsodSrAMD1BGc0BHGnWQ6WkA9oxXurPNB8RIBgKAPQVjoejFxp9tcfxIwfpWizHhPqjZGySKbUeGomRmtCY38MHFV2Rw2Mltub4ZG+5i9PSTTdZurS6BDyEOufHrn/fpWz2kxp5XD6cqK9xcsvh0/f7lbwuyOPm240n7z5l8S1vXQWsjORy8hz9q43h8Jyy64w68y+5f5Moxom5dNH9jAFRk+hr7u2fKtdEX/DCdnI0zdCMAAbmvnPtjzX5EK4dlv+p3Xs0uTEk33f7I03ZTyjuIQprmKuHR6zl9C+dvoS7fSrh1BVR963Pgts96pa/Mx/FxXvEyLR7rIzygeeawj7P5cno9EvmYSzKy00nSLPTA/wAJCkbSMWcqMcxJzXdKT5VF9io0SeqLGh6FAFAFAFAFAFAFAFAFAFAFAZzirhwatAJLchLqPeNs4z6ZqTi3qrWMlrF9UQc3E/ERUovSa6M891O21xD8Pdw3JGcbRE831A3qVi4HCsazx6YJS/Xb5Lt+hVX28Uuj4NurX3+bLLQODru8PNeQS20Y8ZAMt9M7fWt2RxDT8s243Cdd7mbzTdAs7CNVSPmIGMmudeMpzdlm8mdFGfhwUIbJFl8PF4IoPoKzePW+x54kvUWFAGKzUEjFvUVWZ4FAFAFAFAFAFAdoAoAoAoAoAoAoDlAcFAGKA7QBQBQBQBQBQBQBQBQH/9k=', 1000, NULL, CAST(10000 AS Decimal(10, 0)), NULL, N'Xe chở hàng vui vẻ')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'261d7548-05e4-4266-bb29-9152380ef7d4', N'8846073f-5dd6-4f6d-98f3-2ac57ef78ee9', N'eecbd3f1-134e-43b0-a3e1-700edb72a6a4', N'Sữa rửa mặt Simple 150ml', N'SavedImages/3019365_d0935f106a1946d1bdf1740139e918d7_grande.webp', 100, NULL, CAST(30000 AS Decimal(10, 0)), NULL, N'Sữa rửa mặt dịu nhẹ')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'feb20ca3-773d-4f1f-94ff-93960753b9ef', N'5e886d7c-9657-4b40-9cad-5ce659382a8e', N'1818e9a8-52cd-4538-9512-ad9234bd1eea', N'Sweater Nam', N'https://mcdn.coolmate.me/image/August2022/thoi-trang-thu-dong-nam-2022_719.jpg', 1000, NULL, CAST(49000 AS Decimal(10, 0)), NULL, N'Sweater ấm áp')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'eff8c527-5ff4-4ca4-ac35-96a30a896cab', N'8846073f-5dd6-4f6d-98f3-2ac57ef78ee9', N'eecbd3f1-134e-43b0-a3e1-700edb72a6a4', N'Xịt Khoáng Cho Da Nhạy Cảm Bio Essence', N'SavedImages/3012802-4_639f218f0dea4960b21d7acd24bec63e_1024x1024.webp', 100, NULL, CAST(10000 AS Decimal(10, 0)), NULL, N'Xịt khoáng mát mẻ')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'7ac6bdcd-f83e-4d39-a5c9-9cb49983e5cc', N'73f72978-bb21-4d6f-a3c3-5860d4fec10b', N'9bd9c078-7e46-4ba0-be56-7223ee26608b', N'Máy ảnh hồng cute', N'SavedImages/co-nen-mua-may-chup-hinh-lay-ngay-ko-0.jpg', 100, NULL, CAST(9000 AS Decimal(10, 0)), NULL, N'Máy ảnh cute dễ xài')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'88e856f9-d1aa-46ed-be32-a26114b294e5', N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'32de7141-e052-4591-a103-2f5f544e01e0', N'Gạo thơm đặc sản Neptune ST25 túi 5kg', N'SavedImages/sellingpoint.webp', 100, NULL, CAST(80000 AS Decimal(10, 0)), NULL, N'Gạo là lương thực thực phẩm thiết yếu có trong mọi căn bếp. Gạo thơm đặc sản Neptune ST25 túi 5kg với giống gạo ST25 ngon nhất thế giới vào năm 2019, hạt cơm ngọt, dẻo nhiều và ít nở, giúp bạn ăn ngon miệng. Gạo Neptune chất lượng, thơm ngon, giúp bạn ăn được nhiều cơm.')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'352a1483-a7eb-4a5d-a2a1-a8fcc2a42e13', N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'32de7141-e052-4591-a103-2f5f544e01e0', N'Viên thả lẩu La Cusina gói 300g', N'SavedImages/vien-tha-lau-la-cusina-goi-300g-202310180946258064_300x300.webp', 100, NULL, CAST(35700 AS Decimal(10, 0)), NULL, N'Viên thả lẩu được giới trẻ yêu thích đến từ thương hiệu viên thả lẩu La Cusina Viên thả lẩu La Cusina gói 300g là sự kết hợp giữa các loại chả viên với nhiều hương vị khác nhau. Là loại viên thả lẩu cho món lẩu thêm phàn đậm đà, chuẩn vị, đa dạng cũng như chế biến được nhiều món ăn ngon.')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'd2cda90c-9874-426b-80dd-b50e60ff2809', N'301b32cd-5b1b-4b35-b80a-50b2281893e8', N'467e803a-426e-441d-8db8-669ae23a3469', N'Điện thoại cục gạch', N'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQfYeBhoYAfN2ui_x_6YbuxwaEKi-xgql-oNP4iRuDWLE6Lb8Ra7-sGfLWXZa1PJ9xKhOD64WE2l37jW1xV3g6vOdpiPcBb&usqp=CAE', 15, NULL, CAST(1000 AS Decimal(10, 0)), NULL, N'Cục gạch chọi chó')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'a6b2fc75-ebac-47e9-9b26-b660dcb1548a', N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'32de7141-e052-4591-a103-2f5f544e01e0', N'Trứng gà Happy Egg hộp 10 quả', N'SavedImages/trung-ga-happy-egg-hop-10-qua-202306241534507065.webp', 99, NULL, CAST(10000 AS Decimal(10, 0)), NULL, N'Trứng gà ngon, đảm bảo an toàn vệ sinh thực phẩm')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'ac8f6399-070a-475c-b2c7-bcdf73ea7bc2', N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'32de7141-e052-4591-a103-2f5f544e01e0', N'Cá basa cắt khúc đông lạnh 450-550g', N'SavedImages/ca-basa-cat-khuc-500gr-202305261653480656.webp', 100, NULL, CAST(35000 AS Decimal(10, 0)), NULL, N'Cá basa tiêu chuẩn xuất khẩu EU, thịt cá ngọt, bổ dưỡng và ai cũng có thể ăn được. Các món ngon không thể bỏ qua với cá basa như cá basa chiên giòn, cá basa nhúng giấm, ăn cùng với lẩu,... Cá được sơ chế và đóng gói tiện lợi, tiết kiệm thời gian đi chợ.')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'2ec2551a-c07e-4a73-aba7-c74912cbb235', N'301b32cd-5b1b-4b35-b80a-50b2281893e8', N'467e803a-426e-441d-8db8-669ae23a3469', N'Điện thoại di động cổ xưa', N'SavedImages/shopping.webp', 100, NULL, CAST(10000 AS Decimal(10, 0)), NULL, N'Di động cổ cực hot')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'408a922d-29fe-49ef-9078-d5bfe764ede5', N'8846073f-5dd6-4f6d-98f3-2ac57ef78ee9', N'eecbd3f1-134e-43b0-a3e1-700edb72a6a4', N'Sữa Chống Nắng Dưỡng Da Kiềm Dầu', N'SavedImages/21_bc8f0eca997243f9b7d4918c35170e60_grande.webp', 100, NULL, CAST(1000 AS Decimal(10, 0)), NULL, N'Sữa chống nắng dưỡng da kiềm dầu bảo vệ hoàn hảo của thương hiệu Anessa giúp chống UV & bụi mịn hoàn hảo dưới mọi điều kiện sinh hoạt, kể cả thời tiết khắc nghiệt nhất (phù hợp với làn da thiên dầu)')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'de6ff28d-0aad-4488-abb7-e69e8763d67b', N'301b32cd-5b1b-4b35-b80a-50b2281893e8', N'467e803a-426e-441d-8db8-669ae23a3469', N'Iphone 13', N'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQi_uQwYhSXEIKphmikymHlCRfr3xb7etVCizy34SM-IJMKq0WVC_3dt2LAufRi-6EW9J-j47xemxZBNpSnRE3Gyp-BqDsrnVK4StRZn6IJ&usqp=CAE', 10000, NULL, CAST(1000 AS Decimal(10, 0)), NULL, N'Săn sale đi mọi người. Iphone 13 giá cực hời')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'd4bc5237-f663-4874-9f62-f0dd5d03d15c', N'8846073f-5dd6-4f6d-98f3-2ac57ef78ee9', N'eecbd3f1-134e-43b0-a3e1-700edb72a6a4', N'Nước Uống Bổ Sung Collagen Goodlife Glow 3000MG', N'SavedImages/3025299_2_4936881ce0604b399fedad916c2feb64_f66cff13335f42be840395e74e3a3eee_grande.webp', 1000, NULL, CAST(6000 AS Decimal(10, 0)), NULL, N'Bổ sung Collagen cực tốt')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'1b4402d4-cd98-4063-8c28-f8805efdb942', N'92613d38-9204-4f7a-a1dc-40974f47c995', N'2ea22aa1-2368-4742-8d96-994337ed92de', N'Búa thần kỳ', N'https://concung.com/2021/05/50497-72986-large_mobile/do-choi-bua-dap-am-nhac-855-84a.jpg', 100, NULL, CAST(2000 AS Decimal(10, 0)), NULL, N'Búa thần kỳ')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'14ad7066-6e2a-4c4b-8b57-f935819175e7', N'41ed0e34-167b-4f00-9373-25ef1eae084c', N'c9c33aeb-38f4-44a0-89b5-860ba5ae8c23', N'Apple Macbook', N'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQId0j9LThq4SP1ZCwqruAbRozfwxXmyaujAyuT-YamgOEjXdKrKXIsKqq5NFf0N_aLB29mfI65-egSbUYGGxgNpNiMj5jcban3bZVweHP0ojPBU7J5Y60AlCND&usqp=CAc', 1000, NULL, CAST(2000 AS Decimal(10, 0)), NULL, N'mượt mà tự tin')
+GO
+INSERT [dbo].[ProductInfo] ([product_id], [seller_id], [type_id], [product_name], [product_image], [product_available], [product_sales], [product_price], [product_voucher], [product_description]) VALUES (N'79796ed6-61cd-481f-b6c6-ffb74eb5ff5e', N'92613d38-9204-4f7a-a1dc-40974f47c995', N'2ea22aa1-2368-4742-8d96-994337ed92de', N'Đồ hàng nấu ăn', N'data:image/jpeg;base64,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', 100, NULL, CAST(1000 AS Decimal(10, 0)), NULL, N'Vui vẻ')
+GO
+INSERT [dbo].[requestSetRole] ([id], [user_id], [email], [fullName], [shopName], [commoditiesSector], [address], [phone], [status]) VALUES (N'ac6cae7e-a947-4920-944b-464b51efeb52', N'8846073f-5dd6-4f6d-98f3-2ac57ef78ee9', N'a@gmail.com', N'Quang Vinh', N'Mỹ phẩm LyLy', N'EECBD3F1-134E-43B0-A3E1-700EDB72A6A4', N'Cam le', N'0918900356', N'OK')
+GO
+INSERT [dbo].[requestSetRole] ([id], [user_id], [email], [fullName], [shopName], [commoditiesSector], [address], [phone], [status]) VALUES (N'feac54f5-e8ec-4148-aeef-5d98928d645e', N'41ed0e34-167b-4f00-9373-25ef1eae084c', N'vinh', N'Quang Vinh', N'Máy Tính Vinh', N'C9C33AEB-38F4-44A0-89B5-860BA5AE8C23', N'26 Cẩm lệ,Đà Nẵng', N'0918900356', N'OK')
+GO
+INSERT [dbo].[requestSetRole] ([id], [user_id], [email], [fullName], [shopName], [commoditiesSector], [address], [phone], [status]) VALUES (N'a45b5dfa-84c4-46e3-984a-6bbc3ff91232', N'301b32cd-5b1b-4b35-b80a-50b2281893e8', N'a@gmail.com', N'Quang Vinh', N'Di động Vàng', N'467E803A-426E-441D-8DB8-669AE23A3469', N'26 Cẩm lệ,Đà Nẵng', N'0918900356', N'OK')
+GO
+INSERT [dbo].[requestSetRole] ([id], [user_id], [email], [fullName], [shopName], [commoditiesSector], [address], [phone], [status]) VALUES (N'd6efdda0-8913-4b16-9554-a155e2aea0b1', N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', N'vinhdqde170663@fpt.edu.vn', N'Quang Vinh', N'Bách hóa xanh', N'32DE7141-E052-4591-A103-2F5F544E01E0', N'26 Cẩm lệ,Đà Nẵng', N'0918900356', N'OK')
+GO
+INSERT [dbo].[requestSetRole] ([id], [user_id], [email], [fullName], [shopName], [commoditiesSector], [address], [phone], [status]) VALUES (N'cca44d2a-f787-49d8-83bf-cb2a8497cb2c', N'73f72978-bb21-4d6f-a3c3-5860d4fec10b', N'a', N'Quang Vinh', N'Máy ảnh XQuang', N'9BD9C078-7E46-4BA0-BE56-7223EE26608B', N'26 Cẩm lệ,Đà Nẵng', N'0918900356', N'OK')
+GO
+INSERT [dbo].[requestSetRole] ([id], [user_id], [email], [fullName], [shopName], [commoditiesSector], [address], [phone], [status]) VALUES (N'521093d6-51fc-4ce2-9b84-f08c553c1630', N'5e886d7c-9657-4b40-9cad-5ce659382a8e', N'a', N'Quang Vinh', N'Thời trang nam thu đông', N'1818E9A8-52CD-4538-9512-AD9234BD1EEA', N'26 Cẩm lệ,Đà Nẵng', N'0918900356', N'OK')
+GO
+INSERT [dbo].[requestSetRole] ([id], [user_id], [email], [fullName], [shopName], [commoditiesSector], [address], [phone], [status]) VALUES (N'3e64866e-48c2-435f-9af6-f41e5afe286f', N'92613d38-9204-4f7a-a1dc-40974f47c995', N'a', N'Quang', N'Đồ chơi MẸ VÀ BÉ', N'2EA22AA1-2368-4742-8D96-994337ED92DE', N'Cam le', N'0918900356', N'OK')
+GO
+INSERT [dbo].[ShoppingCart] ([id], [user_id], [cart_quantity], [cart_total]) VALUES (N'b8bfb920-2b3b-4b27-98d0-3a1b47df9407', N'6b5dc3de-ae4c-4547-b08b-5bf06a968d62', NULL, NULL)
+GO
+INSERT [dbo].[ShoppingCartItem] ([id], [cart_id], [product_id], [item_quantity], [item_subtotal]) VALUES (N'1ef22f03-842f-4ea8-bd1c-c444bf6cc86f', N'b8bfb920-2b3b-4b27-98d0-3a1b47df9407', N'5320f87e-f241-470f-8bf2-32458f1fe25b', 1, NULL)
+GO
+INSERT [dbo].[UserRole] ([id], [role]) VALUES (1, N'admin')
+GO
+INSERT [dbo].[UserRole] ([id], [role]) VALUES (2, N'User ')
+GO
+INSERT [dbo].[UserRole] ([id], [role]) VALUES (3, N'Seller ')
+GO
+INSERT [dbo].[UserRole] ([id], [role]) VALUES (4, N'Shipper đà nẵng')
+GO
+INSERT [dbo].[UserRole] ([id], [role]) VALUES (5, N'Shipper HCM')
+GO
+INSERT [dbo].[UserRole] ([id], [role]) VALUES (6, N'Shipper HN')
+GO
+INSERT [dbo].[UserRole] ([id], [role]) VALUES (7, N'Shipper Gia Lai')
+GO
+INSERT [dbo].[UserRole] ([id], [role]) VALUES (8, N'Shipper Vũng Tàu')
+GO
+ALTER TABLE [dbo].[AppUser] ADD  CONSTRAINT [DF__AppUser__id__276EDEB3]  DEFAULT (newid()) FOR [id]
+GO
+ALTER TABLE [dbo].[Feedback] ADD  CONSTRAINT [DF_Feedback_feedBack_id]  DEFAULT (newid()) FOR [feedBack_id]
+GO
+ALTER TABLE [dbo].[Feedback] ADD  CONSTRAINT [DF_Feedback_date]  DEFAULT (getdate()) FOR [date]
+GO
+ALTER TABLE [dbo].[Order] ADD  CONSTRAINT [DF__CustomerOrde__id__45F365D3]  DEFAULT (newid()) FOR [id]
+GO
+ALTER TABLE [dbo].[OrderDetail] ADD  CONSTRAINT [DF__OrderItemInf__id__46E78A0C]  DEFAULT (newid()) FOR [id]
+GO
+ALTER TABLE [dbo].[ProductCategory] ADD  DEFAULT (newid()) FOR [id]
+GO
+ALTER TABLE [dbo].[ProductInfo] ADD  CONSTRAINT [DF__ProductInfo__id__5CD6CB2B]  DEFAULT (newid()) FOR [product_id]
+GO
+ALTER TABLE [dbo].[requestSetRole] ADD  CONSTRAINT [DF__requestSetRo__id__5DCAEF64]  DEFAULT (newid()) FOR [id]
+GO
+ALTER TABLE [dbo].[ShopComment] ADD  DEFAULT (newid()) FOR [id]
+GO
+ALTER TABLE [dbo].[ShopComment] ADD  DEFAULT (getdate()) FOR [comment_date]
+GO
+ALTER TABLE [dbo].[ShopLike] ADD  DEFAULT (newid()) FOR [id]
+GO
+ALTER TABLE [dbo].[ShoppingCart] ADD  DEFAULT (newid()) FOR [id]
+GO
+ALTER TABLE [dbo].[ShoppingCartItem] ADD  DEFAULT (newid()) FOR [id]
+GO
+ALTER TABLE [dbo].[SocialComment] ADD  DEFAULT (newid()) FOR [id]
+GO
+ALTER TABLE [dbo].[SocialComment] ADD  DEFAULT (getdate()) FOR [comment_date]
+GO
+ALTER TABLE [dbo].[SocialLike] ADD  DEFAULT (newid()) FOR [id]
+GO
+ALTER TABLE [dbo].[UserFollow] ADD  DEFAULT (newid()) FOR [id]
+GO
+ALTER TABLE [dbo].[UserMessage] ADD  CONSTRAINT [DF__UserMessage__id__5441852A]  DEFAULT (newid()) FOR [id]
+GO
+ALTER TABLE [dbo].[UserMessage] ADD  CONSTRAINT [DF__UserMessa__messa__5535A963]  DEFAULT (getdate()) FOR [message_date]
+GO
+ALTER TABLE [dbo].[UserNotification] ADD  DEFAULT (newid()) FOR [id]
+GO
+ALTER TABLE [dbo].[UserNotification] ADD  DEFAULT (getdate()) FOR [notification_date]
+GO
+ALTER TABLE [dbo].[UserPost] ADD  DEFAULT (newid()) FOR [id]
+GO
+ALTER TABLE [dbo].[AppUser]  WITH CHECK ADD  CONSTRAINT [FK_AppUser_UserRole] FOREIGN KEY([role_id])
+REFERENCES [dbo].[UserRole] ([id])
+GO
+ALTER TABLE [dbo].[AppUser] CHECK CONSTRAINT [FK_AppUser_UserRole]
+GO
+ALTER TABLE [dbo].[Order]  WITH CHECK ADD  CONSTRAINT [FK__CustomerO__custo__3E52440B] FOREIGN KEY([customer_id])
+REFERENCES [dbo].[AppUser] ([id])
+GO
+ALTER TABLE [dbo].[Order] CHECK CONSTRAINT [FK__CustomerO__custo__3E52440B]
+GO
+ALTER TABLE [dbo].[Order]  WITH CHECK ADD  CONSTRAINT [FK_Order_Order] FOREIGN KEY([id])
+REFERENCES [dbo].[Order] ([id])
+GO
+ALTER TABLE [dbo].[Order] CHECK CONSTRAINT [FK_Order_Order]
+GO
+ALTER TABLE [dbo].[OrderDetail]  WITH CHECK ADD  CONSTRAINT [FK__OrderItem__order__5BE2A6F2] FOREIGN KEY([order_id])
+REFERENCES [dbo].[Order] ([id])
+GO
+ALTER TABLE [dbo].[OrderDetail] CHECK CONSTRAINT [FK__OrderItem__order__5BE2A6F2]
+GO
+ALTER TABLE [dbo].[OrderDetail]  WITH CHECK ADD  CONSTRAINT [FK__OrderItem__produ__6FE99F9F] FOREIGN KEY([product_id])
+REFERENCES [dbo].[ProductInfo] ([product_id])
+GO
+ALTER TABLE [dbo].[OrderDetail] CHECK CONSTRAINT [FK__OrderItem__produ__6FE99F9F]
+GO
+ALTER TABLE [dbo].[ProductInfo]  WITH CHECK ADD  CONSTRAINT [FK__ProductIn__selle__2F10007B] FOREIGN KEY([seller_id])
+REFERENCES [dbo].[AppUser] ([id])
+GO
+ALTER TABLE [dbo].[ProductInfo] CHECK CONSTRAINT [FK__ProductIn__selle__2F10007B]
+GO
+ALTER TABLE [dbo].[ProductInfo]  WITH CHECK ADD  CONSTRAINT [FK__ProductIn__type___71D1E811] FOREIGN KEY([type_id])
+REFERENCES [dbo].[ProductCategory] ([id])
+GO
+ALTER TABLE [dbo].[ProductInfo] CHECK CONSTRAINT [FK__ProductIn__type___71D1E811]
+GO
+ALTER TABLE [dbo].[requestSetRole]  WITH CHECK ADD  CONSTRAINT [FK_requestSetRole_AppUser] FOREIGN KEY([user_id])
+REFERENCES [dbo].[AppUser] ([id])
+GO
+ALTER TABLE [dbo].[requestSetRole] CHECK CONSTRAINT [FK_requestSetRole_AppUser]
+GO
+ALTER TABLE [dbo].[ShopComment]  WITH CHECK ADD  CONSTRAINT [FK__ShopComme__comme__5812160E] FOREIGN KEY([commentor_id])
+REFERENCES [dbo].[AppUser] ([id])
+GO
+ALTER TABLE [dbo].[ShopComment] CHECK CONSTRAINT [FK__ShopComme__comme__5812160E]
+GO
+ALTER TABLE [dbo].[ShopComment]  WITH CHECK ADD  CONSTRAINT [FK__ShopComme__produ__74AE54BC] FOREIGN KEY([product_id])
+REFERENCES [dbo].[ProductInfo] ([product_id])
+GO
+ALTER TABLE [dbo].[ShopComment] CHECK CONSTRAINT [FK__ShopComme__produ__74AE54BC]
+GO
+ALTER TABLE [dbo].[ShopLike]  WITH CHECK ADD  CONSTRAINT [FK__ShopLike__liker___5CD6CB2B] FOREIGN KEY([liker_id])
+REFERENCES [dbo].[AppUser] ([id])
+GO
+ALTER TABLE [dbo].[ShopLike] CHECK CONSTRAINT [FK__ShopLike__liker___5CD6CB2B]
+GO
+ALTER TABLE [dbo].[ShopLike]  WITH CHECK ADD  CONSTRAINT [FK__ShopLike__produc__76969D2E] FOREIGN KEY([product_id])
+REFERENCES [dbo].[ProductInfo] ([product_id])
+GO
+ALTER TABLE [dbo].[ShopLike] CHECK CONSTRAINT [FK__ShopLike__produc__76969D2E]
+GO
+ALTER TABLE [dbo].[ShoppingCartItem]  WITH CHECK ADD FOREIGN KEY([cart_id])
+REFERENCES [dbo].[ShoppingCart] ([id])
+GO
+ALTER TABLE [dbo].[ShoppingCartItem]  WITH CHECK ADD FOREIGN KEY([cart_id])
+REFERENCES [dbo].[ShoppingCart] ([id])
+GO
+ALTER TABLE [dbo].[ShoppingCartItem]  WITH CHECK ADD  CONSTRAINT [FK__ShoppingC__produ__787EE5A0] FOREIGN KEY([product_id])
+REFERENCES [dbo].[ProductInfo] ([product_id])
+GO
+ALTER TABLE [dbo].[ShoppingCartItem] CHECK CONSTRAINT [FK__ShoppingC__produ__787EE5A0]
+GO
+ALTER TABLE [dbo].[SocialComment]  WITH CHECK ADD  CONSTRAINT [FK__SocialCom__comme__4D94879B] FOREIGN KEY([commentor_id])
+REFERENCES [dbo].[AppUser] ([id])
+GO
+ALTER TABLE [dbo].[SocialComment] CHECK CONSTRAINT [FK__SocialCom__comme__4D94879B]
+GO
+ALTER TABLE [dbo].[SocialComment]  WITH CHECK ADD FOREIGN KEY([post_id])
+REFERENCES [dbo].[UserPost] ([id])
+GO
+ALTER TABLE [dbo].[SocialComment]  WITH CHECK ADD FOREIGN KEY([post_id])
+REFERENCES [dbo].[UserPost] ([id])
+GO
+ALTER TABLE [dbo].[SocialLike]  WITH CHECK ADD  CONSTRAINT [FK__SocialLik__liker__52593CB8] FOREIGN KEY([liker_id])
+REFERENCES [dbo].[AppUser] ([id])
+GO
+ALTER TABLE [dbo].[SocialLike] CHECK CONSTRAINT [FK__SocialLik__liker__52593CB8]
+GO
+ALTER TABLE [dbo].[SocialLike]  WITH CHECK ADD FOREIGN KEY([post_id])
+REFERENCES [dbo].[UserPost] ([id])
+GO
+ALTER TABLE [dbo].[SocialLike]  WITH CHECK ADD FOREIGN KEY([post_id])
+REFERENCES [dbo].[UserPost] ([id])
+GO
+ALTER TABLE [dbo].[UserFollow]  WITH CHECK ADD  CONSTRAINT [FK__UserFollo__follo__60A75C0F] FOREIGN KEY([follower_id])
+REFERENCES [dbo].[AppUser] ([id])
+GO
+ALTER TABLE [dbo].[UserFollow] CHECK CONSTRAINT [FK__UserFollo__follo__60A75C0F]
+GO
+ALTER TABLE [dbo].[UserFollow]  WITH CHECK ADD  CONSTRAINT [FK__UserFollo__follo__619B8048] FOREIGN KEY([following_id])
+REFERENCES [dbo].[AppUser] ([id])
+GO
+ALTER TABLE [dbo].[UserFollow] CHECK CONSTRAINT [FK__UserFollo__follo__619B8048]
+GO
+ALTER TABLE [dbo].[UserMessage]  WITH CHECK ADD  CONSTRAINT [FK__UserMessa__recei__6C190EBB] FOREIGN KEY([receiver_id])
+REFERENCES [dbo].[AppUser] ([id])
+GO
+ALTER TABLE [dbo].[UserMessage] CHECK CONSTRAINT [FK__UserMessa__recei__6C190EBB]
+GO
+ALTER TABLE [dbo].[UserMessage]  WITH CHECK ADD  CONSTRAINT [FK__UserMessa__sende__6B24EA82] FOREIGN KEY([sender_id])
+REFERENCES [dbo].[AppUser] ([id])
+GO
+ALTER TABLE [dbo].[UserMessage] CHECK CONSTRAINT [FK__UserMessa__sende__6B24EA82]
+GO
+ALTER TABLE [dbo].[UserNotification]  WITH CHECK ADD  CONSTRAINT [FK__UserNotif__user___66603565] FOREIGN KEY([user_id])
+REFERENCES [dbo].[AppUser] ([id])
+GO
+ALTER TABLE [dbo].[UserNotification] CHECK CONSTRAINT [FK__UserNotif__user___66603565]
+GO
+ALTER TABLE [dbo].[UserPost]  WITH CHECK ADD  CONSTRAINT [FK__UserPost__user_i__47DBAE45] FOREIGN KEY([user_id])
+REFERENCES [dbo].[AppUser] ([id])
+GO
+ALTER TABLE [dbo].[UserPost] CHECK CONSTRAINT [FK__UserPost__user_i__47DBAE45]
+GO
