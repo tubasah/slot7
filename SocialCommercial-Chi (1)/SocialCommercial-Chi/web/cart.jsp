@@ -152,17 +152,7 @@
                                 Cập nhật giỏ hàng</a>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="shoping__continue">
-                            <div class="shoping__discount">
-                                <h5>Mã giảm giá</h5>
-                                <form action="#">
-                                    <input type="text" placeholder="Nhập mã phiếu giảm giá">
-                                    <button type="submit" class="site-btn">Apply</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="col-lg-6">
                         <div class="shoping__checkout">
                             <h5>Tổng thanh toán</h5>
