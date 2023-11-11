@@ -1,0 +1,335 @@
+package base;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+
+public class TestLogin extends BaseTest {
+
+
+    @Test
+    @DisplayName("Test Login Failed with empty both email and password input")
+    public void testEmptyEmailAndPasswordInput() {
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        WebElement emailInput = driver.findElement(By.id("input-email"));
+        emailInput.sendKeys("");
+
+        WebElement passwordInput = driver.findElement(By.id("input-password"));
+        passwordInput.sendKeys("");
+
+        WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        loginButton.click();
+
+
+        WebElement errorMessage = driver.findElement(By.cssSelector(".alert.alert-danger.alert-dismissible"));
+        Assertions.assertTrue(errorMessage.isDisplayed(), "Warning: No match for E-Mail Address and/or Password.");
+    }
+
+    @Test
+    @DisplayName("Test Login Successfully with valid account ")
+    public void testWithValidAccount() {
+        // Điều hướng đến trang đăng nhập
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        WebElement emailInput = driver.findElement(By.id("input-email"));
+        emailInput.sendKeys("vinhdqde170663@fpt.edu.vn");
+
+        WebElement passwordInput = driver.findElement(By.id("input-password"));
+        passwordInput.sendKeys("vinh123456");
+
+        WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        loginButton.click();
+
+
+
+        String expectedUrl = "https://tutorialsninja.com/demo/index.php?route=account/account";
+        Assertions.assertEquals(expectedUrl, driver.getCurrentUrl());
+    }
+    @Test
+    @DisplayName("Test Login Failed with wrong email and password")
+    public void testWithValidEmailButWrongEmailAndPassWord() {
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        WebElement emailInput = driver.findElement(By.id("input-email"));
+        emailInput.sendKeys("vinhdqsasde170663@fpt.edu.vn");
+
+        WebElement passwordInput = driver.findElement(By.id("input-password"));
+        passwordInput.sendKeys("VInhaaaaaa123456");
+
+        WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        loginButton.click();
+
+
+        WebElement errorMessage = driver.findElement(By.cssSelector(".alert.alert-danger.alert-dismissible"));
+        Assertions.assertTrue(errorMessage.isDisplayed(), "Warning: No match for E-Mail Address and/or Password.");
+    }
+    @Test
+    @DisplayName("Test Login Failed with valid email but wrong password")
+    public void testWithValidEmailButWrongPassWord() {
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        WebElement emailInput = driver.findElement(By.id("input-email"));
+        emailInput.sendKeys("vinhdqde170663@fpt.edu.vn");
+
+        WebElement passwordInput = driver.findElement(By.id("input-password"));
+        passwordInput.sendKeys("VInhaaaaaa123456");
+
+        WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        loginButton.click();
+
+
+        WebElement errorMessage = driver.findElement(By.cssSelector(".alert.alert-danger.alert-dismissible"));
+        Assertions.assertTrue(errorMessage.isDisplayed(), "Warning: No match for E-Mail Address and/or Password.");
+    }
+
+    @Test
+    @DisplayName("Test Login Failed with valid password but wrong email")
+    public void testWithValidPassWordButWrongEmail() {
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        WebElement emailInput = driver.findElement(By.id("input-email"));
+        emailInput.sendKeys("vinadwsdade170663@fpt.edu.vn");
+
+        WebElement passwordInput = driver.findElement(By.id("input-password"));
+        passwordInput.sendKeys("vinh123456");
+
+        WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        loginButton.click();
+
+
+        WebElement errorMessage = driver.findElement(By.cssSelector(".alert.alert-danger.alert-dismissible"));
+        Assertions.assertTrue(errorMessage.isDisplayed(), "Warning: No match for E-Mail Address and/or Password.");
+    }
+    @Test
+    @DisplayName("Test Login Failed with valid account but the email and password account was capitalized")
+    public void testWithValidAccountButEmailAndPassWordCapitalization() {
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        WebElement emailInput = driver.findElement(By.id("input-email"));
+        emailInput.sendKeys("ViNhDqDe170663@FpT.eDu.Vn");
+
+        WebElement passwordInput = driver.findElement(By.id("input-password"));
+        passwordInput.sendKeys("VINH123456");
+
+        WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        loginButton.click();
+
+
+        WebElement errorMessage = driver.findElement(By.cssSelector(".alert.alert-danger.alert-dismissible"));
+        Assertions.assertTrue(errorMessage.isDisplayed(), "Warning: No match for E-Mail Address and/or Password.");
+    }
+    @Test
+    @DisplayName("Test Login Failed with valid account but the email account was capitalized")
+    public void testWithValidAccountButEmailCapitalization() {
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        WebElement emailInput = driver.findElement(By.id("input-email"));
+        emailInput.sendKeys("ViNhDqDe170663@FpT.eDu.Vn");
+
+        WebElement passwordInput = driver.findElement(By.id("input-password"));
+        passwordInput.sendKeys("vinh123456");
+
+        WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        loginButton.click();
+
+
+        WebElement errorMessage = driver.findElement(By.cssSelector(".alert.alert-danger.alert-dismissible"));
+        Assertions.assertTrue(errorMessage.isDisplayed(), "Warning: No match for E-Mail Address and/or Password.");
+    }
+    @Test
+    @DisplayName("Test Login Failed with valid account but the password account was capitalized")
+    public void testWithValidAccountButPassWordCapitalization() {
+        // Điều hướng đến trang đăng nhập
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        WebElement emailInput = driver.findElement(By.id("input-email"));
+        emailInput.sendKeys("vinhdqde170663@fpt.edu.vn");
+
+        WebElement passwordInput = driver.findElement(By.id("input-password"));
+        passwordInput.sendKeys("ViNh123456");
+
+        WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        loginButton.click();
+
+
+        WebElement errorMessage = driver.findElement(By.cssSelector(".alert.alert-danger.alert-dismissible"));
+        Assertions.assertTrue(errorMessage.isDisplayed(), "Warning: No match for E-Mail Address and/or Password.");
+    }
+    @Test
+    @DisplayName("Test Login failed with invalid account 10 times ")
+    public void testWithLogin10Times() {
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        for (int i = 0; i < 10; i++) {
+            WebElement emailInput = driver.findElement(By.id("input-email"));
+            emailInput.clear(); // Xóa giá trị hiện tại
+            emailInput.sendKeys("vinhdqadd.vn");
+
+            WebElement passwordInput = driver.findElement(By.id("input-password"));
+            passwordInput.clear(); // Xóa giá trị hiện tại
+            passwordInput.sendKeys("Vzcxczxc");
+
+            WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+            loginButton.click();
+        }
+
+
+        WebElement errorMessage = driver.findElement(By.cssSelector(".alert.alert-danger.alert-dismissible"));
+        Assertions.assertTrue(errorMessage.isDisplayed(), "Warning: No match for E-Mail Address and/or Password.");
+    }
+    @Test
+    @DisplayName("Test Login Failed with valid email but empty password")
+    public void testWithValidEmailButEmptyPassWord() {
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        WebElement emailInput = driver.findElement(By.id("input-email"));
+        emailInput.sendKeys("vinhdqde170663@fpt.edu.vn");
+
+        WebElement passwordInput = driver.findElement(By.id("input-password"));
+        passwordInput.sendKeys("");
+
+        WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        loginButton.click();
+
+
+        WebElement errorMessage = driver.findElement(By.cssSelector(".alert.alert-danger.alert-dismissible"));
+        Assertions.assertTrue(errorMessage.isDisplayed(), "Warning: No match for E-Mail Address and/or Password.");
+    }
+
+    @Test
+    @DisplayName("Test Login Failed with valid password but empty email")
+    public void testWithValidPassWordButEmptyEmail() {
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        WebElement emailInput = driver.findElement(By.id("input-email"));
+        emailInput.sendKeys("");
+
+        WebElement passwordInput = driver.findElement(By.id("input-password"));
+        passwordInput.sendKeys("vinh123456");
+
+        WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        loginButton.click();
+
+
+        WebElement errorMessage = driver.findElement(By.cssSelector(".alert.alert-danger.alert-dismissible"));
+        Assertions.assertTrue(errorMessage.isDisplayed(), "Warning: No match for E-Mail Address and/or Password.");
+    }
+
+    @Test
+    @DisplayName("Test Login Failed with Valid Account but have special characters in both email and password")
+    public void testWithSpecialCharInBothEmailAndPassWord() {
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        WebElement emailInput = driver.findElement(By.id("input-email"));
+        emailInput.sendKeys("vinhd#$%&qde170663@fpt.edu.vn");
+
+        WebElement passwordInput = driver.findElement(By.id("input-password"));
+        passwordInput.sendKeys("vin$&*%#h123456");
+
+        WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        loginButton.click();
+
+
+        WebElement errorMessage = driver.findElement(By.cssSelector(".alert.alert-danger.alert-dismissible"));
+        Assertions.assertTrue(errorMessage.isDisplayed(), "Warning: No match for E-Mail Address and/or Password.");
+    }
+    @Test
+    @DisplayName("Test Login Failed with Valid Acount but have special characters in email")
+    public void testWithSpecialCharInEmail() {
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        WebElement emailInput = driver.findElement(By.id("input-email"));
+        emailInput.sendKeys("vinhdqde^&*$#170663@fpt.edu.vn");
+
+        WebElement passwordInput = driver.findElement(By.id("input-password"));
+        passwordInput.sendKeys("vinh123456");
+
+        WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        loginButton.click();
+
+
+        WebElement errorMessage = driver.findElement(By.cssSelector(".alert.alert-danger.alert-dismissible"));
+        Assertions.assertTrue(errorMessage.isDisplayed(), "Warning: No match for E-Mail Address and/or Password.");
+    }
+    @Test
+    @DisplayName("Test Login Failed with Valid Acount but have special characters in password")
+    public void testWithSpecialCharInPassword() {
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        WebElement emailInput = driver.findElement(By.id("input-email"));
+        emailInput.sendKeys("vinhdqde170663@fpt.edu.vn");
+
+        WebElement passwordInput = driver.findElement(By.id("input-password"));
+        passwordInput.sendKeys("vinh12^&*%$#3456");
+
+        WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        loginButton.click();
+
+
+        WebElement errorMessage = driver.findElement(By.cssSelector(".alert.alert-danger.alert-dismissible"));
+        Assertions.assertTrue(errorMessage.isDisplayed(), "Warning: No match for E-Mail Address and/or Password.");
+    }
+
+
+    @Test
+    @DisplayName("Test Login Failed with Valid account but have space in email and password")
+    public void testWithValidAccountAndHaveSpaceInBothEmailAndPas() {
+        // Điều hướng đến trang đăng nhập
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        WebElement emailInput = driver.findElement(By.id("input-email"));
+        emailInput.sendKeys("vinhdqd e17066 3@fpt.edu.vn  ");
+
+        WebElement passwordInput = driver.findElement(By.id("input-password"));
+        passwordInput.sendKeys("vi nh1 234 56  ");
+
+        WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        loginButton.click();
+
+
+        WebElement errorMessage = driver.findElement(By.cssSelector(".alert.alert-danger.alert-dismissible"));
+        Assertions.assertTrue(errorMessage.isDisplayed(), "Warning: No match for E-Mail Address and/or Password.");
+    }
+    @Test
+    @DisplayName("Test Login Failed with Valid account but have space in email")
+    public void testWithValidAccountAndHaveSpaceInEndEmail() {
+        // Điều hướng đến trang đăng nhập
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        WebElement emailInput = driver.findElement(By.id("input-email"));
+        emailInput.sendKeys("vi n hdqde 170 663@ fpt.edu.vn  ");
+
+        WebElement passwordInput = driver.findElement(By.id("input-password"));
+        passwordInput.sendKeys("vinh123456");
+
+        WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        loginButton.click();
+
+
+        WebElement errorMessage = driver.findElement(By.cssSelector(".alert.alert-danger.alert-dismissible"));
+        Assertions.assertTrue(errorMessage.isDisplayed(), "Warning: No match for E-Mail Address and/or Password.");
+    }
+    @Test
+    @DisplayName("Test Login Failed with Valid account but have space in password")
+    public void testWithValidAccountAndHaveSpaceInEndPass() {
+        // Điều hướng đến trang đăng nhập
+        driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
+
+        WebElement emailInput = driver.findElement(By.id("input-email"));
+        emailInput.sendKeys("vinhdqde170663@fpt.edu.vn");
+
+        WebElement passwordInput = driver.findElement(By.id("input-password"));
+        passwordInput.sendKeys("vi nh12 3456  ");
+
+        WebElement loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        loginButton.click();
+
+
+        WebElement errorMessage = driver.findElement(By.cssSelector(".alert.alert-danger.alert-dismissible"));
+        Assertions.assertTrue(errorMessage.isDisplayed(), "Warning: No match for E-Mail Address and/or Password.");
+    }
+}
